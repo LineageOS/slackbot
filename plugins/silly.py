@@ -11,10 +11,10 @@ from plugins.db import DataStore
 
 
 class Silly(Plugin):
-    def get_catfact():
+    def get_catfact(self):
         data = requests.get("http://catfacts-api.appspot.com/api/facts")
         if data.status_code == 200:
-            return data['facts'][0]
+            return data.json()['facts'][0]
         return 'error getting fact!'
 
     def process_message(self, data):
@@ -22,4 +22,4 @@ class Silly(Plugin):
         if 'groot' in message.lower():
             self.outputs.append([data['channel'], 'I AM GROOT'])
         if 'catfact' in message.lower():
-            self.outputs.append([data['channel'], get_catfact()])
+            self.outputs.append([data['channel'], self.get_catfact()])
