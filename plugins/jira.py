@@ -24,7 +24,7 @@ jira = JiraProxy().jira
 
 class JiraTicketParser(Plugin):
     def process_message(self, data):
-        valid_prefixes = ['LINEAGE', 'BUGBASH', 'INFRA', 'LNN', 'DEVREL']
+        valid_prefixes = ['ANNOUNCE', 'BUGBASH', 'DEVREL', 'INFRA', 'LINEAGE', 'LINN', 'REGRESSION']
         text = data['text']
         tickets = re.findall(r'[A-Z]+-[0-9]+', text)
         for ticket in tickets:
