@@ -32,7 +32,7 @@ class DataStore(object):
         '''
         data = _Data.objects(plugin=plugin, key=key).first()
         if data:
-            data.value = value
+            data.value = json.dumps(value)
             data.save()
         else:
             data = _Data(plugin=plugin, key=key, value=json.dumps(value)).save()
