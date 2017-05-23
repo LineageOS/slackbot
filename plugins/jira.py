@@ -34,5 +34,5 @@ class JiraTicketParser(Plugin):
                 except JIRAError as j:
                     return
                 self.slack_client.api_call('chat.postMessage', channel=data['channel'], as_user=True, attachments=[
-                    {"fallback": "", "color": "good", "title": "JIRA: {}".format(ticket), "title_link": "https://jira.lineageos.org/browse/{}".format(ticket), 'text': "Summary: {}\nStatus: {}\nAssignee: {}".format(issue.fields.summary, issue.fields.status.name, issue.fields.assignee)}
+                    {"fallback": "https://jira.lineageos.org/browse/{}: {}".format(ticket, issue.fields.summary), "color": "good", "title": "JIRA: {}".format(ticket), "title_link": "https://jira.lineageos.org/browse/{}".format(ticket), 'text': "Summary: {}\nStatus: {}\nAssignee: {}".format(issue.fields.summary, issue.fields.status.name, issue.fields.assignee)}
                 ])
