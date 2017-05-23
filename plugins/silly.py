@@ -14,4 +14,4 @@ class Silly(Plugin):
     def process_message(self, data):
         message = data['text']
         if 'groot' in message.lower():
-            self.outputs.append([data['channel'], 'I AM GROOT')
+            self.outputs.append([data['channel'], 'I AM GROOT'])
