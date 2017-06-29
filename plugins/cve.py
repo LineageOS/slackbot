@@ -18,7 +18,7 @@ class CveParser(Plugin):
             if r.status_code == 200:
                 try:
                     summary = r.json()['summary']
-                    url = "https://cve.mitre.org/cgi-bin/cvename.cgi?name=".format(cve)
+                    url = "https://cve.mitre.org/cgi-bin/cvename.cgi?name={}".format(cve)
                     self.slack_client.api_call('chat.postMessage', channel=data['channel'], as_user=True, attachments=[
                         {"fallback": "{}: {} ({})".format(cve, summary, url), "color": "danger", "title": "{}: {}".format(cve, summary), "title_link": url}
                     ])
