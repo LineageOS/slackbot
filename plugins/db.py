@@ -17,13 +17,13 @@ connect("slackbot")
 class DataStore(object):
 
     @classmethod
-    def get(cls, plugin, key):
+    def get(cls, plugin, key, default=None):
         '''Given a key, get its value'''
         data = _Data.objects(plugin=plugin, key=key).first()
         if data:
             return json.loads(data.value)
         else:
-            return None
+            return default
 
     @classmethod
     def save(cls, plugin, key, value):
