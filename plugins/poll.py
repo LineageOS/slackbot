@@ -61,13 +61,13 @@ class PollPlugin(Plugin):
         self._save_votes()
 
     def _load(self):
-        data = DataStore.get(PLUGIN, 'votes')
+        data = DataStore.get(PLUGIN, 'votes', {})
         for d in data.values(): # for each poll
             for k in d: # for each user
                 d[k] = Vote.load(d[k])
         self.votes = data
         print(data)
-        data = DataStore.get(PLUGIN, 'polls')
+        data = DataStore.get(PLUGIN, 'polls', {})
         for k,v in data.items():
             self.polls[k] = Poll.load(v)
         print(self.polls)
