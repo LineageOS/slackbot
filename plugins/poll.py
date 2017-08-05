@@ -102,6 +102,14 @@ class PollPlugin(Plugin):
         self._save_votes()
         return True
 
+    def poll_delete(self, pollid):
+        if pollid not in self.polls:
+            return False
+        del self.polls[pollid]
+        del self.votes[pollid]
+        self._save()
+        return True
+
     def poll_add_option(self, user, pollid, option):
         if pollid not in self.polls:
             return False
@@ -156,6 +164,7 @@ class PollPlugin(Plugin):
                     'unvote <pollid> - remove your vote from <pollid>',
                     'results <pollid> - show results for <pollid>',
                     'list - show all active polls',
+                    'delete <pollid> - delete a poll question'
                     ]
             att = []
             for c in commands:
@@ -200,6 +209,14 @@ class PollPlugin(Plugin):
 
             self.poll_unvote(data['user'], arg[2])
             self._say(data, 'unvoted')
+
+        elif cmd == 'delete':
+            # !poll delete <pollid>
+            if len(arg) < 3:
+                self._say(data, 'not enough arguments')
+                return
+            self.poll_delete(arg[2])
+            self._say(data, 'deleted')
 
         elif cmd == 'choices':
             # !poll options <pollid>
@@ -248,4 +265,3 @@ class PollPlugin(Plugin):
                     channel=data['channel'], as_user=True, attachments=attachments)
         else:
             self._say(data, 'unknown cmd %s'%cmd)
-
