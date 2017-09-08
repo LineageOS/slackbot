@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45724d2f_8cd894dc",
+        "filename": "plugins/gerrit.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 11604
+      },
+      "writtenOn": "2017-09-08T10:59:18Z",
+      "side": 1,
+      "message": "do you need to escape these? would `r\u0027(?:\u0027 + gerrit_url.replace(\u0027.\u0027, r\u0027\\.\u0027) + ...` be enough?",
+      "range": {
+        "startLine": 88,
+        "startChar": 46,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "7a13770cc4442ae8da0cf438432a332e39a64e2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
