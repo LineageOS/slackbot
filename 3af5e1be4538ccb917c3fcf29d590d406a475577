@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78c8c2fa_e47fe271",
+        "filename": "plugins/gerrit.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-09-09T06:25:47Z",
+      "side": 1,
+      "message": "maybe should check without proto prefix too",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "3af5e1be4538ccb917c3fcf29d590d406a475577",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a21929c5_704e982e",
+        "filename": "plugins/gerrit.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-09-09T06:25:47Z",
+      "side": 1,
+      "message": "comment this",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "3af5e1be4538ccb917c3fcf29d590d406a475577",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "537aaa73_6f2f5556",
+        "filename": "plugins/gerrit.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-09-09T06:25:47Z",
+      "side": 1,
+      "message": "comment this",
+      "range": {
+        "startLine": 21,
+        "startChar": 84,
+        "endLine": 21,
+        "endChar": 154
+      },
+      "revId": "3af5e1be4538ccb917c3fcf29d590d406a475577",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0fdf61_a970928b",
+        "filename": "plugins/gerrit.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-09-09T06:25:47Z",
+      "side": 1,
+      "message": "These can be improved",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "3af5e1be4538ccb917c3fcf29d590d406a475577",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e8b1a38_61fc8eb6",
+        "filename": "plugins/gerrit.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-09-09T06:25:47Z",
+      "side": 1,
+      "message": "Can probably make this better too. At the moment, this plugin is totally useless to IRC users",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 59
+      },
+      "revId": "3af5e1be4538ccb917c3fcf29d590d406a475577",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a24e8b2_75cebe32",
+        "filename": "plugins/gerrit.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-09-09T06:25:47Z",
+      "side": 1,
+      "message": "need to be initialised separately",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 29
+      },
+      "revId": "3af5e1be4538ccb917c3fcf29d590d406a475577",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
