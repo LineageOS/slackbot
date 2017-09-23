@@ -5,6 +5,8 @@ from rtmbot.core import Plugin, Job
 import base64
 import requests
 
+from plugins.db import DataStore
+
 PLUGIN = 'tags'
 PREFIX = '!'
 
@@ -39,7 +41,10 @@ class TagPlugin(Plugin):
 class TagJob(Job):
     def __init__(self, *args, **kwargs):
         Job.__init__(self, *args, **kwargs)
-        self.tags = self._get_tags()
+        self.tags = DataStore.get(PLUGIN, "tags")
+        if not self.tags:
+            self.tags = self._get_tags()
+            DataStore.save(PLUGIN, "tags", self.tags)
 
     def _get_tags(self):
         try:
@@ -78,15 +83,17 @@ class TagJob(Job):
         new_tags = self._get_tags()
         if len(self.tags) == 0:
             self.tags = new_tags
+            DataStore.save(plugin, "tags", self.tags)
             return []
         # note: this won't catch tags that are removed
-        diff = set(new_tags) - set(self.tags[10:])
+        diff = set(new_tags) - set(self.tags)
         if len(diff) > 0:
             msgs = []
             for tag in sorted(diff):
                 bid = TagJob._get_version(tag)
                 msgs.append('<%s%s|%s> - %s'%(TAG_VIEW_URL, tag, tag, bid))
             self.tags = new_tags
+            DataStore.save(plugin, "tags", self.tags)
             for m in msgs:
                 print(m)
                 slack_client.api_call('chat.postMessage', as_user=True,
