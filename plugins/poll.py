@@ -159,7 +159,7 @@ class PollPlugin(Plugin):
             commands = [
                     'create <poll question> - create a poll with the given question. responds with the new poll\'s id',
                     'choice <pollid> <new poll option> - add <new poll option> to the list of options for <pollid>',
-                    'choices <pollid> - list available choices for <pollid>'
+                    'choices <pollid> - list available choices for <pollid>',
                     'vote <pollid> <option number> - vote for <option number> in <pollid>. If you already voted, transfer your vote',
                     'unvote <pollid> - remove your vote from <pollid>',
                     'results <pollid> - show results for <pollid>',
