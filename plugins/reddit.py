@@ -23,7 +23,7 @@ class RedditJob(Job):
             for post in r.subreddit("lineageos").new(limit=10):
                 if post.id in done:
                     continue
-                posts.append(["C62RNKJTZ", post.url])
+                posts.append(["C62RNKJTZ", "https://www.reddit.com" + post.permalink])
                 done.append(post.id)
                 DataStore.save(PLUGIN, "done", done)
         except Exception as e:
