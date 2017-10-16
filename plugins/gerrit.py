@@ -22,9 +22,9 @@ class GerritChangeFetcher(Plugin):
                 "title": "{}: {} ({})".format(change['_number'], change['subject'], 'Open' if change['status'] == 'NEW' else change['status'].capitalize()),
                 "title_link": "{}#/c/{}".format(self.gerrit_url,change['_number']),
                 "mrkdwn_in": ["text"],
-                'text': ("*Project*: <https://review.lineageos.org/#/q/project:{project}|{project}> ({branch})\n"
+                'text': ("*Project*: <{base}#/q/project:{project}|{project}> ({branch})\n"
                          "*Topic*: {topic}\n"
-                         "*Owner*: <https://review.lineageos.org/#/q/owner:{username}|{name} ({email})>")
+                         "*Owner*: <{base}#/q/owner:{username}|{name} ({email})>")
                     .format(
                         project = change['project'],
                         branch = change['branch'],
@@ -32,6 +32,7 @@ class GerritChangeFetcher(Plugin):
                         username = change['owner']['username'],
                         name = change['owner']['name'],
                         email = change['owner']['email'],
+                        base = self.gerrit_url,
                     )
             }
         ])
@@ -61,13 +62,13 @@ class GerritChangeFetcher(Plugin):
                 "fallback": "Topic: {}".format(topic_name),
                 "color": "good",
                 "title": "Topic: {}".format(topic_name),
-                "title_link": "{}/#/q/topic:{}".format(self.gerrit_url,topic_name),
+                "title_link": "{}#/q/topic:{}".format(self.gerrit_url,topic_name),
                 "mrkdwn_in": ["text"],
                 "text": ("{total} commits across {projects} projects on {branches} branch(es)\n"
-                         "*Open*: <{base}/#/q/status:open%20AND%20topic:{name}|{ocn}>, "
-                                 "of which <{base}/#/q/status:open%20AND%20is:mergeable%20AND%20topic:{name}|{omcn}> are mergeable\n"
-                         "*Merged*: <{base}/#/q/status:merged%20AND%20topic:{name}|{mcn}>\n"
-                         "*Abandoned*: <{base}/#/q/status:abandoned%20AND%20topic:{name}|{acn}>")
+                         "*Open*: <{base}#/q/status:open%20AND%20topic:{name}|{ocn}>, "
+                                 "of which <{base}#/q/status:open%20AND%20is:mergeable%20AND%20topic:{name}|{omcn}> are mergeable\n"
+                         "*Merged*: <{base}#/q/status:merged%20AND%20topic:{name}|{mcn}>\n"
+                         "*Abandoned*: <{base}#/q/status:abandoned%20AND%20topic:{name}|{acn}>")
                     .format(
                         projects = len(projects),
                         branches = len(branches),
