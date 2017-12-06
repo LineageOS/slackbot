@@ -36,3 +36,9 @@ class JiraTicketParser(Plugin):
                 self.slack_client.api_call('chat.postMessage', channel=data['channel'], as_user=True, attachments=[
                     {"fallback": "https://jira.lineageos.org/browse/{}: {}".format(ticket, issue.fields.summary), "color": "good", "title": "JIRA: {}".format(ticket), "title_link": "https://jira.lineageos.org/browse/{}".format(ticket), 'text': "Summary: {}\nStatus: {}\nAssignee: {}".format(issue.fields.summary, issue.fields.status.name, issue.fields.assignee)}
                 ])
+
+class JiraAnnounceSync(Plugin):
+    def process_message(self, data):
+        if data['channel'] == u'C3D4N6Q9L':
+            who = self.slack_client.api_call('users.info', user=data['user'])['user']['name']
+            j = jira.create_issue(project="ANNOUNCE", issuetype='Task', summary='New slack announcement from {}'.format(who), description=data['text'])
