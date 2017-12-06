@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 from __future__ import print_function
+from __future__ import unicode_literals
 
 import re
 import sys
@@ -39,6 +40,7 @@ class JiraTicketParser(Plugin):
 
 class JiraAnnounceSync(Plugin):
     def process_message(self, data):
-        if data['channel'] == u'C3D4N6Q9L':
-            who = self.slack_client.api_call('users.info', user=data['user'])['user']['name']
-            j = jira.create_issue(project="ANNOUNCE", issuetype='Task', summary='New slack announcement from {}'.format(who), description=data['text'])
+        if data['channel'] == 'C3D4N6Q9L':
+            if data['text'].lower().startswith('announcement: '):
+                who = self.slack_client.api_call('users.info', user=data['user'])['user']['name']
+                j = jira.create_issue(project="ANNOUNCE", issuetype='Task', summary='New slack announcement from {}'.format(who), description=data['text'])
