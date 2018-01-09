@@ -12,8 +12,10 @@ class CveParser(Plugin):
 
     def process_message(self, data):
         message = data['text']
-        cves = re.findall(r'CVE-\d{4}-\d{4,7}', message)
-        for cve in cves:
+        if re.search(r'\bignore\b', message):
+            return False
+        matches = re.finditer(r'CVE-\d{4}-\d{4,7}', message)
+        for cve in [next(matches).group(0) for _ in xrange(4)]:
             r = requests.get("https://cve.circl.lu/api/cve/{}".format(cve))
             if r.status_code == 200:
                 try:

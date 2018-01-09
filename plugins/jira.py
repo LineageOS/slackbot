@@ -27,8 +27,10 @@ class JiraTicketParser(Plugin):
     def process_message(self, data):
         valid_prefixes = ['ANNOUNCE', 'BUGBASH', 'DEVREL', 'INFRA', 'LINEAGE', 'LINN', 'REGRESSION']
         text = data['text']
-        tickets = re.findall(r'[A-Z]+-[0-9]+', text)
-        for ticket in tickets:
+        if re.search(r'\bignore\b', text):
+            return False
+        matches = re.finditer(r'[A-Z]+-[0-9]+', text)
+        for ticket in [next(matches).group(0) for _ in xrange(4)]:
             if any(ticket.startswith(item) for item in valid_prefixes):
                 try:
                     issue = jira.issue(ticket)
