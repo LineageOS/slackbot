@@ -88,6 +88,8 @@ class GerritChangeFetcher(Plugin):
         channel = data['channel']
         changes = topics = []
         number_detections = 0
+        if re.search(r'\bignore\b', text):
+            return False
         for word in text.split():
             if self.gerrit_url in word:
                 if number_detections >= 4:
