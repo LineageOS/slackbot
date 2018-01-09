@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 import re
 import sys
+from itertools import islice
 
 from jira import JIRA, JIRAError
 
@@ -27,8 +28,11 @@ class JiraTicketParser(Plugin):
     def process_message(self, data):
         valid_prefixes = ['ANNOUNCE', 'BUGBASH', 'DEVREL', 'INFRA', 'LINEAGE', 'LINN', 'REGRESSION']
         text = data['text']
-        tickets = re.findall(r'[A-Z]+-[0-9]+', text)
-        for ticket in tickets:
+        if re.search(r'\bignore\b', text):
+            return False
+        match_iter = re.finditer(r'[A-Z]+-[0-9]+', text)
+        for match in islice(match_iter, 4):
+            ticket = match.group(0)
             if any(ticket.startswith(item) for item in valid_prefixes):
                 try:
                     issue = jira.issue(ticket)
